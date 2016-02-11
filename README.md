@@ -14,6 +14,16 @@ The add-on setup steps come from the [extension dev page] on MDN. Look there for
 [devprefs add-on]: https://add-ons.mozilla.org/en-US/firefox/add-on/devprefs/
 [proxy file]: https://developer.mozilla.org/en-US/Add-ons/Setting_up_extension_development_environment#Firefox_extension_proxy_file
 
+## Building the Add-ons
+
+To build the add-on XPI:
+
+```bash
+make
+```
+
+The add-on will be built into a `dist` directory.
+
 ## Contributing
 
 If you'd like to get involved, take a look at our [help wanted] bugs, or say hello on IRC (#testpilot on Mozilla IRC) or on our [mailing list].
