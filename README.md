@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/mozilla/universal-search.png?label=ready&title=Ready)](https://waffle.io/mozilla/universal-search)
 # universal-search
 
 ## Local Development
