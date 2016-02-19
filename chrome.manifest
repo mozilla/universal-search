@@ -1,1 +1,3 @@
-content usearch-lib lib/
+content universalsearch chrome/content/
+content universalsearch-lib lib/
+content universalsearch-skin chrome/skin/

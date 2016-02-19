@@ -1,0 +1,10 @@
+/* Use extreme selector specificity to override the default bindings,
+ * defined in chrome://browser/content/browser.css, which use the single
+ * id selector #PopupAutoCompleteRichResult.
+ */
+popupset#mainPopupSet panel#PopupAutoCompleteRichResult {
+  /* This odd CSS property connects an XBL file with XUL DOM.
+   * See mdn.io/moz-binding for more.
+   */
+  -moz-binding: url("chrome://universalsearch/content/binding.xml#recommendation-popup");
+}

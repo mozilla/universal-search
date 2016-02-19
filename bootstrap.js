@@ -6,7 +6,7 @@ const {utils: Cu} = Components;
 
 Cu.import('resource://gre/modules/XPCOMUtils.jsm');
 XPCOMUtils.defineLazyModuleGetter(this, 'UniversalSearch',
-  'chrome://usearch-lib/content/universal-search.js');
+  'chrome://universalsearch-lib/content/universal-search.js');
 
 function startup(data, reason) {
   UniversalSearch.load();  
@@ -19,7 +19,7 @@ function shutdown(data, reason) {
   }
 
   UniversalSearch.unload();
-  Cu.unload('chrome://usearch-lib/universal-search.js');
+  Cu.unload('chrome://universalsearch-lib/universal-search.js');
 }
 
 function install(data, reason) {}
