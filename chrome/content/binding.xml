@@ -13,4 +13,14 @@
       </xul:hbox>
     </content>
   </binding>
+
+  <binding id="recommendation-urlbar" extends="chrome://browser/content/urlbarBindings.xml#urlbar">
+    <handlers>
+      <handler event="keypress"><![CDATA[
+        // for now, just call the handler method defined on the parent binding.
+        // we'll add our own key handling logic in #43, #44.
+        return this.handleKeyPress(event);
+      ]]></handler>
+    </handlers>
+  </binding>
 </bindings>
