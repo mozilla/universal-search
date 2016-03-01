@@ -8,3 +8,11 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult {
    */
   -moz-binding: url("chrome://universalsearch/content/binding.xml#recommendation-popup");
 }
+
+/* Same specificity trick here, to override the default bindings for the
+ * urlbar, also defined in chrome://browser/content/browser.css, which use
+ * the single id selector #urlbar.
+ */
+textbox#urlbar {
+  -moz-binding: url("chrome://universalsearch/content/binding.xml#recommendation-urlbar");
+}
