@@ -5,17 +5,29 @@
 const {utils: Cu} = Components;
 
 Cu.import('resource://gre/modules/XPCOMUtils.jsm');
+XPCOMUtils.defineLazyModuleGetter(this, 'Services',
+  'resource://gre/modules/Services.jsm');
 XPCOMUtils.defineLazyModuleGetter(this, 'UniversalSearch',
   'chrome://universalsearch-lib/content/universal-search.js');
 
 function startup(data, reason) {
-  UniversalSearch.load();  
+  // On enable/install, turn on the search suggestion pref.
+  if (reason === ADDON_ENABLE || reason === ADDON_INSTALL) {
+    Services.prefs.setBoolPref('browser.urlbar.suggest.searches', true);
+  }
+
+  UniversalSearch.load();
 }
 
 function shutdown(data, reason) {
   // Clean up on uninstall or deactivation, but not for normal shutdown.
   if (reason === APP_SHUTDOWN) {
     return;
+  }
+
+  // On disable/uninstall, reset the search suggestion pref.
+  if (reason === ADDON_DISABLE || reason === ADDON_UNINSTALL) {
+    Services.prefs.clearUserPref('browser.urlbar.suggest.searches');
   }
 
   UniversalSearch.unload();
