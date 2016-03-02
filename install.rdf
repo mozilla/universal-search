@@ -10,6 +10,8 @@
     <em:description>Universal Search desktop FF experiments in addon format</em:description>
     <em:creator/>
     <em:homepageURL>https://github.com/mozilla/universal-search</em:homepageURL>
+    <em:optionsURL>chrome://universalsearch/content/preferences.xul</em:optionsURL>
+    <em:optionsType>2</em:optionsType>
     <!-- TODO: figure out the release URL (#24) -->
     <em:updateLink>https://example.com/dummy.xpi</em:updateLink>
     <em:targetApplication>
