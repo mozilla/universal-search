@@ -17,9 +17,9 @@
   <binding id="recommendation-urlbar" extends="chrome://browser/content/urlbarBindings.xml#urlbar">
     <handlers>
       <handler event="keypress"><![CDATA[
-        // for now, just call the handler method defined on the parent binding.
-        // we'll add our own key handling logic in #43, #44.
-        return this.handleKeyPress(event);
+        // If the urlbar handles the event, it returns true. Else, it returns
+        // false, and the existing XBL key handlers handle the key event.
+        return window.universalSearch.urlbar.onKeyPress(event) || this.handleKeyPress(event);
       ]]></handler>
     </handlers>
   </binding>
