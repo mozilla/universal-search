@@ -16,3 +16,72 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult {
 textbox#urlbar {
   -moz-binding: url("chrome://universalsearch/content/binding.xml#recommendation-urlbar");
 }
+
+#universal-search-recommendation {
+  border-bottom: solid 1px #D6D6D6;
+  display: flex;
+  padding: 8px 15px 8px 9px;
+}
+
+#universal-search-recommendation[collapsed="true"] {
+  border: 0;
+}
+
+#universal-search-recommendation-container {
+  display: flex;
+  width: 100%;
+}
+
+#universal-search-recommendation-favicon {
+  height: 16px;
+  margin-right: 5px;
+  width: 16px;
+}
+
+#universal-search-recommendation-image,
+#universal-search-recommendation-letterbox {
+  border-radius: 3px;
+  height: 32px;
+  margin-right: 8px;
+  width: 32px;
+}
+
+#universal-search-recommendation-letterbox {
+  align-items: center;
+  background: #888;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+  color: #FFF;
+  display: flex;
+  font-size: 20px;
+  font-weight: 200;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+#universal-search-recommendation-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+
+#universal-search-recommendation-title {
+  font-size: 13px;
+  line-height: 17px;
+}
+
+#universal-search-recommendation-url {
+  visibility: visible;
+}
+
+#universal-search-recommendation-title,
+#universal-search-recommendation-url {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#universal-search-recommendation-label {
+  color: #BBB;
+}
