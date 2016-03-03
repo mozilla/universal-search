@@ -6,7 +6,7 @@
           xmlns:xbl="http://www.mozilla.org/xbl">
   <binding id="recommendation-popup" extends="chrome://browser/content/urlbarBindings.xml#urlbar-rich-result-popup">
     <content ignorekeys="true" level="top" consumeoutsideclicks="never" aria-owns="richlistbox">
-      <xul:hbox id="universal-search-recommendation" />
+      <xul:hbox id="universal-search-recommendation" collapsed="true"/>
       <xul:richlistbox anonid="richlistbox" class="autocomplete-richlistbox" flex="1"/>
       <xul:hbox anonid="footer">
         <children/>
