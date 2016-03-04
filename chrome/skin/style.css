@@ -1,15 +1,18 @@
-/* Use extreme selector specificity to override the default bindings,
+/*
+ * Use extreme selector specificity to override the default bindings,
  * defined in chrome://browser/content/browser.css, which use the single
  * id selector #PopupAutoCompleteRichResult.
  */
 popupset#mainPopupSet panel#PopupAutoCompleteRichResult {
-  /* This odd CSS property connects an XBL file with XUL DOM.
+  /*
+   * This odd CSS property connects an XBL file with XUL DOM.
    * See mdn.io/moz-binding for more.
    */
   -moz-binding: url("chrome://universalsearch/content/binding.xml#recommendation-popup");
 }
 
-/* Same specificity trick here, to override the default bindings for the
+/*
+ * Same specificity trick here, to override the default bindings for the
  * urlbar, also defined in chrome://browser/content/browser.css, which use
  * the single id selector #urlbar.
  */
@@ -18,7 +21,7 @@ textbox#urlbar {
 }
 
 #universal-search-recommendation {
-  border-bottom: solid 1px #D6D6D6;
+  border-bottom: none;
   display: flex;
   padding: 8px 15px 8px 9px;
 }
@@ -84,4 +87,15 @@ textbox#urlbar {
 
 #universal-search-recommendation-label {
   color: #BBB;
+}
+
+/* highlight color, applied when the recommendation is highlighted */
+
+#universal-search-recommendation.highlight {
+  background-color: Highlight;
+  background-image: linear-gradient(rgba(255,255,255,0.3), transparent);
+  color: HighlightText;
+}
+#universal-search-recommendation.highlight #universal-search-recommendation-url {
+  color: HighlightText;
 }
