@@ -11,4 +11,5 @@
       </menupopup>
     </menulist>
   </setting>
+  <setting type="bool" pref="extensions.universalsearch.dummy" title="Use dummy data?" />
 </vbox>
