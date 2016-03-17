@@ -155,3 +155,11 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
   color: HighlightText;
   opacity: 0.67;
 }
+#universal-search-recommendation.highlight #universal-search-recommendation-image {
+  background-color: #FFF;
+  box-shadow: 0;
+}
+#universal-search-recommendation.highlight #universal-search-recommendation-logo,
+#universal-search-recommendation.highlight #universal-search-recommendation-keyimage {
+  z-index: 1;
+}
