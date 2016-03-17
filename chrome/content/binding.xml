@@ -19,85 +19,6 @@
         <children/>
       </xul:hbox>
     </content>
-    <implementation>
-      <![CDATA[
-        /*
-         * The selectedIndex setter sets the blue highlight on the currently-
-         * selected item in the results list. The existing implementation,
-         * defined in autocomplete.xml, automatically closes the popup if no
-         * results list items are selected (selectedIndex = -1).
-         *
-         * Override the setter, removing the auto-close behavior, so that the
-         * universal search recommendation element can steal the highlight.
-         */
-      ]]>
-      <field name="_selectedIndex">-1</field>
-      <property name="selectedIndex">
-        <getter>
-          return this._selectedIndex;
-        </getter>
-        <setter><![CDATA[
-          var resultsContainer = document.getAnonymousElementByAttribute(gURLBar.popup, 'anonid', 'richlistbox');
-
-          // NOTE: getElementsByClassName is needed to obtain a live NodeList.
-          // The results aren't inserted all at once: they are inserted a few
-          // at a time over many successive turns. In order to avoid setting
-          // the selectedIndex past the end of the results list, and also to
-          // avoid mistakenly concluding that the results list is empty, the
-          // NodeList needs to be live, not static.
-          var resultRows = resultsContainer.getElementsByClassName('autocomplete-richlistitem');
-
-          if (!resultRows || !resultRows.length) {
-            return;
-          }
-
-          if (val > resultRows.length - 1) {
-            val = resultRows.length - 1;
-          } else if (val < -1) {
-            val = -1;
-          }
-
-          // Unselect all the rows (in case of any weird multiple-focus bugs),
-          // then immediately select the appropriate row, to hopefully batch
-          // the selection changes into a single DOM update.
-          Array.prototype.forEach.call(resultRows, function(row, i) {
-            row.selected = false;
-          });
-
-          // Highlight the row, if it's found, else highlight nothing.
-          if (resultRows[val]) {
-            resultRows[val].selected = true;
-            // Scroll the row into view, if necessary.
-            resultsContainer.ensureIndexIsVisible(val);
-            this._selectedIndex = val;
-            return val;
-          } else {
-            this._selectedIndex = -1;
-            return -1;
-          }
-        ]]></setter>
-      </property>
-
-      <![CDATA[
-        /*
-         * The urlbar stops working if getNextIndex is not overridden here.
-         * This implementation doesn't handle certain edge cases, like
-         * scrolling off the top or bottom of the list, but whatever code
-         * calls this code doesn't seem to hit that bug.
-         */
-      ]]>
-      <method name="getNextIndex">
-        <parameter name="reverse"/>
-        <parameter name="amount"/>
-        <parameter name="index"/>
-        <parameter name="maxRow"/>
-        <body><![CDATA[
-          let realAmount = amount % maxRow;
-          this._selectedIndex = reverse ? this._selectedIndex - realAmount: this._selectedIndex + realAmount;
-          return this._selectedIndex;
-        ]]></body>
-      </method>
-    </implementation>
   </binding>
 
   <![CDATA[
@@ -113,6 +34,20 @@
         // If our add-on handles the event, it returns true. Else, it returns
         // false, and the existing XBL key handlers handle the key event.
         return window.universalSearch.urlbar.onKeyPress(event) || this.handleKeyPress(event);
+      ]]></handler>
+    </handlers>
+  </binding>
+
+  <![CDATA[
+    /*
+     * Override the results list binding in order to intercept mouse events
+     * fired on it.
+     */
+  ]]>
+  <binding id="autocomplete-richlistbox" extends="chrome://global/content/bindings/autocomplete.xml#autocomplete-richlistbox">
+    <handlers>
+      <handler event="mouseover" phase="capturing"><![CDATA[
+        window.universalSearch.popup.onResultsMouseOver(event);
       ]]></handler>
     </handlers>
   </binding>

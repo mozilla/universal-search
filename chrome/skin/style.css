@@ -20,6 +20,10 @@ textbox#urlbar {
   -moz-binding: url("chrome://universalsearch/content/binding.xml#recommendation-urlbar");
 }
 
+popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
+  -moz-binding: url("chrome://universalsearch/content/binding.xml#autocomplete-richlistbox");
+}
+
 #universal-search-recommendation {
   border-bottom: none;
   display: flex;
