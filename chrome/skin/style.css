@@ -151,3 +151,7 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
 #universal-search-recommendation.highlight #universal-search-recommendation-url {
   color: HighlightText;
 }
+#universal-search-recommendation.highlight #universal-search-recommendation-label {
+  color: HighlightText;
+  opacity: 0.67;
+}
