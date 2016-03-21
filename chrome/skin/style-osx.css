@@ -1,0 +1,7 @@
+@import 'style-common.css';
+
+#universal-search-recommendation {
+  background-color: Highlight;
+  color: HighlightText;
+  background-image: linear-gradient(rgba(255,255,255,0.3), transparent);
+}

@@ -1,0 +1,6 @@
+@import 'style-common.css';
+
+#universal-search-recommendation {
+  background-color: Highlight;
+  color: HighlightText;
+}
