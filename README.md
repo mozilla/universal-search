@@ -11,7 +11,7 @@ The add-on setup steps come from the [extension dev page] on MDN. Look there for
 1. Create a [proxy file] to link your local copy of the code to your add-on development profile.
 
 [extension dev page]: https://developer.mozilla.org/en-US/Add-ons/Setting_up_extension_development_environment
-[devprefs add-on]: https://add-ons.mozilla.org/en-US/firefox/add-on/devprefs/
+[devprefs add-on]: https://addons.mozilla.org/en-US/firefox/addon/devprefs/
 [proxy file]: https://developer.mozilla.org/en-US/Add-ons/Setting_up_extension_development_environment#Firefox_extension_proxy_file
 
 ## Building the Add-ons
