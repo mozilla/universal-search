@@ -10,6 +10,7 @@ Firefox add-on for the [Universal Search](https://wiki.mozilla.org/Firefox/Unive
 
 - [Local development](docs/local.md)
 - [Building the add-on](docs/build.md)
+- [Architecture](docs/architecture.md)
 - [Code conventions](docs/conventions.md)
 - [Event reference](docs/events.md)
 
