@@ -141,7 +141,7 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
   text-align: right;
 }
 
-/* highlight color, applied when the recommendation is highlighted */
+/* Highlight color, applied when the recommendation is highlighted. */
 
 #universal-search-recommendation.highlight {
   background-color: Highlight;
