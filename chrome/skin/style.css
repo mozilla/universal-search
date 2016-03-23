@@ -118,14 +118,17 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
 
 #universal-search-recommendation-title,
 #universal-search-recommendation-url {
+  color: -moz-FieldText;
   display: block;
+  margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 #universal-search-recommendation-url {
-  visibility: visible;
+  font: message-box;
+  color: -moz-nativehyperlinktext;
 }
 
 #universal-search-recommendation-title,
@@ -148,6 +151,7 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
   background-image: linear-gradient(rgba(255,255,255,0.3), transparent);
   color: HighlightText;
 }
+#universal-search-recommendation.highlight #universal-search-recommendation-title,
 #universal-search-recommendation.highlight #universal-search-recommendation-url {
   color: HighlightText;
 }
