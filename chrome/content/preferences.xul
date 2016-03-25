@@ -6,8 +6,8 @@
   <setting pref="extensions.universalsearch.server" type="menulist" title="Recommendation Server">
     <menulist>
       <menupopup>
+        <menuitem value="https://universalsearch.stage.mozaws.net" label="https://universalsearch.stage.mozaws.net"/>
         <menuitem value="http://universal-search.dev" label="http://universal-search.dev"/>
-        <menuitem value="https://search.testpilot.firefox.com" label="https://search.testpilot.firefox.com"/>
       </menupopup>
     </menulist>
   </setting>
