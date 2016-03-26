@@ -6,14 +6,13 @@
       <RDF:Seq>
         <RDF:li>
           <RDF:Description>
-            <em:version>1.0.0</em:version>
+            <em:version>0.5.5</em:version>
             <em:targetApplication>
               <RDF:Description>
                 <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
-                <em:minVersion>38.0</em:minVersion>
-                <em:maxVersion>54.0</em:maxVersion>
-                <!-- TODO: figure out the release URL (#24) -->
-                <em:updateLink>https://example.com/dummy.xpi</em:updateLink>
+                <em:minVersion>45.0</em:minVersion>
+                <em:maxVersion>*</em:maxVersion>
+                <em:updateURL>https://s3-us-west-2.amazonaws.com/universal-search/update.rdf</em:updateURL>
               </RDF:Description>
             </em:targetApplication>
           </RDF:Description>
