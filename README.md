@@ -16,13 +16,7 @@ The add-on setup steps come from the [extension dev page] on MDN. Look there for
 
 ## Building the Add-ons
 
-To build the add-on XPI:
-
-```bash
-make
-```
-
-The add-on will be built into a `dist` directory.
+See [building.md](docs/building.md).
 
 ## Contributing
 
@@ -60,4 +54,3 @@ the urlbar is fired as the body of this event.
 ```
 
 - query: unicode string contents of the urlbar
-
