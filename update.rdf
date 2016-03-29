@@ -6,13 +6,13 @@
       <RDF:Seq>
         <RDF:li>
           <RDF:Description>
-            <em:version>0.5.7</em:version>
+            <em:version>1.0.0b1</em:version>
             <em:targetApplication>
               <RDF:Description>
                 <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
                 <em:minVersion>45.0</em:minVersion>
                 <em:maxVersion>*</em:maxVersion>
-                <em:updateLink>https://s3-us-west-2.amazonaws.com/universal-search/universal-search.rdf</em:updateLink>
+                <em:updateLink>https://s3-us-west-2.amazonaws.com/universal-search/universal-search.xpi</em:updateLink>
               </RDF:Description>
             </em:targetApplication>
           </RDF:Description>

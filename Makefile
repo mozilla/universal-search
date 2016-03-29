@@ -22,7 +22,7 @@ all:
 build:
 	@mkdir -p $(DIST)
 	@rm -f $(XPI)
-	@zip -r $(XPI) . -x "$(DIST)/*" ".git/*" "Makefile" > /dev/null
+	@zip -r $(XPI) . -x "$(DIST)/*" ".*" "Makefile" > /dev/null
 	@echo "Built: $(XPI)"
 
 sign: require-amo-env

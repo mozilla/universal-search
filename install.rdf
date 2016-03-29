@@ -5,7 +5,7 @@
     <em:bootstrap>true</em:bootstrap>
     <em:type>2</em:type>
     <em:unpack>false</em:unpack>
-    <em:version>0.5.7</em:version>
+    <em:version>1.0.0b1</em:version>
     <em:name>Universal Search</em:name>
     <em:description>Universal Search desktop FF experiments in addon format</em:description>
     <em:creator/>
