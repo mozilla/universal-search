@@ -66,6 +66,73 @@ Additionally, we will discard outliers on a schedule:
 - Any queries that have only been made once.
 - Any queries longer than 6 characters that have been made less than 10% as frequently as the most common query of that length (e.g. if the most frequently-made 8-character query has been made 1000 times, all 8-character queries made fewer than 100 times will be discarded).
 
+The logs will be printed to stdout in the standard [mozlog format](https://github.com/mozilla-services/Dockerflow/blob/master/docs/mozlog.md):
+
+```json
+{
+    "EnvVersion": "2.0",
+    "Hostname": "socket.gethostname()",
+    "Logger": "universalSearch",
+    "Pid": 9,
+    "Severity": 6,
+    "Timestamp": 1459980510934186496,
+    "Type": "request.summary",
+
+    "Fields": {
+        "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:48.0) Gecko/20100101 Firefox/48.0",
+        "errno": 0,
+        "lang": "en-US,en;q=0.5",
+        "method": "GET",
+        "path": "/",
+        "t": 35,
+
+        "classifiers": [
+            "keyimage",
+            "favicon"
+        ],
+        "predicates": {
+            "is_protocol": false,
+            "query_length": false,
+            "is_hostname": false
+        },
+        "query": "the mart",
+        "status_code": 200
+    }
+}
+```
+
+
+#### Standard `mozlog` data
+
+* `EnvVersion`: `"2.0"`, static.
+* `Hostname`: the hostname, as reported by Python's `socket.gethostname()` function.
+* `Logger`: `"universalSearch"`, static.
+* `Pid`: the process number.
+* `Severity`: the [syslog security level](https://en.wikipedia.org/wiki/Syslog#Severity_level), mapped from the [Python log type](https://docs.python.org/3/library/logging.html#logging-levels).
+* `Timestamp`: the unix timestamp of the log.
+* `Type`: `"request.summary"`, static.
+
+
+#### Standard `request.summary` fields
+
+* `Fields.agent`: the request's user agent string.
+* `Fields.errno`: 0 if the response status code is < 400; otherwise the response status code.
+* `Fields.lang`: the request's `Accept-Language` header.
+* `Fields.method`: the request's method.
+* `Fields.path`: the request's path.
+* `Fields.t`: the number of ms elapsed in the processing of the request.
+
+
+#### Custom fields
+
+* `Fields.classifiers`: an array of classifiers applied to the result. Not collected if any predicates are `true`.
+* `Fields.predicates`: an object of predicates to further data collection; if any of these are `true`, no query data is recorded.
+    * `Fields.predicates.is_hostname`: `true` if the query appears to be a hostname.
+    * `Fields.predicates.is_protocol`: `true` if the query appears to begin with a protocol.
+    * `Fields.predicates.query_length`: `true` if the query is longer than 20 characters.
+* `Fields.query`: the value of the `q` querystring parameter. Not collected if any predicates are `true`.
+* `Fields.status_code`: the HTTP status code of the response. Not collected if any predicates are `true`.
+
 
 ## Data analysis
 
