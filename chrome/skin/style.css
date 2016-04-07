@@ -139,9 +139,12 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
 
 #universal-search-recommendation-label {
   color: #BBB;
+  cursor: default;
   flex-grow: 1;
   margin-left: 8px;
   text-align: right;
+  -moz-user-select: none;
+  user-select: none;
 }
 
 /* Highlight color, applied when the recommendation is highlighted. */
