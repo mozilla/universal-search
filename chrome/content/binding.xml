@@ -46,8 +46,8 @@
   ]]>
   <binding id="autocomplete-richlistbox" extends="chrome://global/content/bindings/autocomplete.xml#autocomplete-richlistbox">
     <handlers>
-      <handler event="mouseover" phase="capturing"><![CDATA[
-        window.universalSearch.popup.onResultsMouseOver(event);
+      <handler event="mousemove" phase="capturing"><![CDATA[
+        window.universalSearch.popup.onResultsMouseMove(event);
       ]]></handler>
     </handlers>
   </binding>
