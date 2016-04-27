@@ -95,11 +95,13 @@ Updated: https://s3-us-west-2.amazonaws.com/universal-search/universal-search.xp
 
 To release a new version of the add-on:
 
-1. Increment the version numbers in `update.rdf` and `install.rdf`. It must be higher than the previous verions.
-2. Run `make`.
-3. Verify that the add-on was correctly uploaded by downloading the URL demonstrated by the output, e.g.
+1. Increment the version numbers in `update.rdf` and `install.rdf`. The new version number must be higher than the previous versions.
+2. `git commit` the rdf file changes, with a commit message of the form "Version a.b.c".
+3. Run `make`.
+4. Verify that the add-on was correctly uploaded by downloading the URL demonstrated by the output, e.g.
 
-```shell
-$ curl -I https://s3-us-west-2.amazonaws.com/universal-search/universal-search-1.0.0.xpi
-HTTP/1.1 200 OK
-```
+  ```shell
+  $ curl -I https://s3-us-west-2.amazonaws.com/universal-search/universal-search-1.0.0.xpi
+  HTTP/1.1 200 OK
+  ```
+5. Push the new commit, and the newly-created git tag, to the main Mozilla repo.
