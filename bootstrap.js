@@ -31,7 +31,7 @@ function shutdown(data, reason) {
   }
 
   UniversalSearch.unload();
-  Cu.unload('chrome://universalsearch-lib/universal-search.js');
+  Cu.unload('chrome://universalsearch-lib/content/universal-search.js');
 }
 
 function install(data, reason) {}
