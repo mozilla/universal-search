@@ -7,6 +7,7 @@ A summary of the metrics the Universal Search add-on and recommendation server w
 - **URL bar** — the unified address + search bar at the top of the browser.
 - **Popup** — the popup that appears when you begin typing into the URL bar.
 - **Search** — the full lifecycle, beginning when the user types a key into the url bar, and ending when the user either chooses an item from or otherwise dismisses the popup.
+- **Recommendation** - the recommendation UI inserted into the popup by this add-on.
 
 
 ## Data collection
@@ -16,36 +17,73 @@ Metrics gathered from the Universal Search add-on will be reported to the Test P
 
 ### On the client
 
-Universal Search will record and report each of the following events:
+#### The popup lifecycle
 
-- User selects a recommendation.
-	- Time from search start to search completion.
-	- Length of query when selected.
-	- List of enhancers applied (e.g. `Object.keys(recommendation.enhancements)`.
-	- Value of the recommendation's `data-type` attribute. _(NB: this likely won't matter in early experiments. This is intended to allow explicit monitoring of qualitative types of results, e.g. "movie cards".)_
-- User enters a URL.
-	- Time from search start to search completion.
-- Use directly searches using their default search engine.
-	- Time from search start to search completion.
-	- Length of query.
-- User selects a suggested search term.
-	- Time from search start to search completion.
-	- Length of query.
-	- Levenstein distance between query and completed search term.
-- User selects a bookmark.
-	- Time from search start to search completion.
-	- Length of query.
-- Use selects an item from history.
-	- Time from search start to search completion.
-	- Length of query.
-- The user terminates a search.
+- The popup usually opens when the user types in the urlbar. It also opens in some less common circumstances, like clicking the history drop marker (the small down caret to the right of the urlbar).
+- The popup closes when the user navigates or dismisses the popup without navigating.
+  - The popup can be dismissed without navigating by hitting the 'Escape', left arrow, or right arrow keys.
+  - The user can navigate by clicking a result in the popup, or by using the arrow or Tab keys to highlight a result in the popup, then hitting Enter.
+  - The user can also navigate by typing in the urlbar and hitting Enter, without ever interacting with the popup.
 
-This data will be used in three ways:
+#### Measuring the popup lifecycle
 
-1. To gain a deeper understanding of the value of our recommendations to users.
-2. To gain a deeper understanding as to how users engage with the URL bar, search popup, and our recommendations.
-3. To segment users of other metrics.
+Each time the popup is closed, we record some facts about Firefox's state:
 
+- `didNavigate`: was the popup closed because the user navigated, or because the popup was dismissed without navigating (for example, using the Escape key)?
+- `interactionType`: if the user did navigate, was the selected item clicked or keyed?
+- `recommendationShown`: was a recommendation visible when the popup was closed?
+- `recommendationType`: if a recommendation was shown, was it a wikipedia or a top-level domain recommendation?
+  - These types will grow over time, as we add new kinds of recommendations.
+- `recommendationSelected`: if the user navigated, and if the recommendation was visible, did the user navigate to the recommendation URL?
+- `selectedIndex`: if the user navigated to an item in the popup, which item was selected?
+  - For instance, if the third non-recommendation result was clicked, `selectedIndex` would have a value of 2.
+  - If the recommendation was selected, the `selectedIndex` value will be -1.
+
+Here's a rough schema:
+
+```js
+{
+  didNavigate: true or false
+  interactionType: 'click' or 'key'
+  recommendationShown: true or false
+  recommendationSelected: true or false
+	recommendationType: 'tld' or 'wikipedia'
+  selectedIndex: an integer between -1 and 30 inclusive
+}
+```
+
+Here's an example of a complete telemetry ping:
+
+```js
+{
+	"test": "universal-search@mozilla.com",  // The em:id field from the add-on
+	"agent": "User Agent String",
+	"payload": {
+		"didNavigate": true,
+		"interactionType": "click",
+		"recommendationShown": true,
+		"recommendationType": "tld",
+		"recommendationSelected": true,
+		"selectedIndex": -1
+	}
+}
+```
+
+#### Data Analysis
+
+We will use this data to calculate click-through rates (CTR) for the popup as shown below.
+
+- CTR of the popup overall: number of events with `didNavigate = true` / total event count
+- CTR when recommendations are shown: (number of events with `didNavigate = true` and `recommendationShown = true`) / (total events with `recommendationShown = true`)
+- CTR when recommendations are not shown: (number of events with `didNavigate = true` and `recommendationShown = false`) / (total events with `recommendationShown = false`)
+- CTR when wikipedia recommendations are shown: (number of events with `didNavigate = true` and `recommendationType = wikipedia`) / (total events with `recommendationType = wikipedia`)
+- CTR when TLD recommendations are shown: (number of events with `didNavigate = true` and `recommendationType = tld`) / (total events with `recommendationType = tld`)
+- When users navigate via the popup, how often do they use the mouse: (number of events with `didNavigate = true` and `interactionType = click`) / (total events with `didNavigate = true`)
+- When users navigate via the popup, how often do they use the keyboard: (number of events with `didNavigate = true` and `interactionType = key`) / (total events with `didNavigate = true`)
+- CTR for the nth result down the list: (number of events with `didNavigate = true` and `selectedIndex == n`) / (total events with `didNavigate = true`)
+  - We'll use this formula to generate a histogram for the various values of `selectedIndex`.
+
+By using CTR as a proxy for helpfulness, we can use these CTRs to measure whether recommendations are helpful overall, and which types are most or least helpful.
 
 ### On the server
 
