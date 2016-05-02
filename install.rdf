@@ -11,6 +11,7 @@
     <em:creator/>
     <em:homepageURL>https://testpilot.firefox.com/experiments/universal-search</em:homepageURL>
     <em:optionsURL>chrome://universalsearch/content/preferences.xul</em:optionsURL>
+    <em:iconURL>chrome://universalsearch-skin/content/icon.png</em:iconURL>
     <em:optionsType>2</em:optionsType>
     <em:updateURL>https://s3-us-west-2.amazonaws.com/universal-search/update.rdf</em:updateURL>
     <em:targetApplication>
