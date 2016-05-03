@@ -154,6 +154,13 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
   background-image: linear-gradient(rgba(255,255,255,0.3), transparent);
   color: HighlightText;
 }
+#universal-search-recommendation.highlight .wikipedia #universal-search-recommendation-icon {
+  background: url('chrome://universalsearch-skin/content/wikipedia-light.svg') no-repeat top left;
+  background-size: 16px;
+}
+#universal-search-recommendation.highlight .wikipedia #universal-search-recommendation-favicon {
+  opacity: 0;
+}
 #universal-search-recommendation.highlight #universal-search-recommendation-title,
 #universal-search-recommendation.highlight #universal-search-recommendation-url {
   color: HighlightText;
