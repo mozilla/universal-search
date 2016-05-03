@@ -7,7 +7,7 @@
     <em:unpack>false</em:unpack>
     <em:version>1.0.2</em:version>
     <em:name>Universal Search</em:name>
-    <em:description>Universal Search puts the best sites from around the web in your Awesome Bar. By typing just a few characters, you can easily navigate to the best the web has to offer. You’ll also find recommendations for popular people and articles from Wikipedia so you can quickly get answers to your burning questions.</em:description>
+    <em:description>Universal Search puts the best sites from around the web in your Awesome Bar. By typing just a few characters, you can easily navigate to the best the web has to offer. You’ll also find recommendations for popular people and articles from Wikipedia so you can quickly get answers to your burning questions. Learn more about this Test Pilot experiment at https://testpilot.firefox.com. </em:description>
     <em:creator/>
     <em:homepageURL>https://testpilot.firefox.com/experiments/universal-search</em:homepageURL>
     <em:optionsURL>chrome://universalsearch/content/preferences.xul</em:optionsURL>
