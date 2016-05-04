@@ -5,7 +5,7 @@
     <em:bootstrap>true</em:bootstrap>
     <em:type>2</em:type>
     <em:unpack>false</em:unpack>
-    <em:version>1.0.4</em:version>
+    <em:version>1.0.5</em:version>
     <em:name>Universal Search</em:name>
     <em:description>Universal Search puts the best sites from around the web in your Awesome Bar. By typing just a few characters, you can easily navigate to the best the web has to offer. You’ll also find recommendations for popular people and articles from Wikipedia so you can quickly get answers to your burning questions. Learn more about this Test Pilot experiment at https://testpilot.firefox.com. </em:description>
     <em:creator/>
