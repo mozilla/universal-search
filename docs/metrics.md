@@ -212,11 +212,15 @@ local schema = {
     {"timestamp",                  "TIMESTAMP", nil,    "SORTKEY",   "Timestamp"},
     {"uuid",                       "VARCHAR",   36,      nil,         get_uuid},
     {"hostname",                   "VARCHAR",   255,     nil,         "Hostname"},
-    {"logger",                     "VARCHAR",   255,     nil,         "logger"},
+    {"logger",                     "VARCHAR",   255,     nil,         "Logger"},
     {"severity",                   "INTEGER",   nil,     nil,         "Severity"},
-    {"type",                       "VARCHAR",   255,     nil,         "type"},
+    {"type",                       "VARCHAR",   255,     nil,         "Type"},
 
-    {"agent",                      "VARCHAR",   255,     nil,         "Fields[agent]"},
+    -- Automatically parsed out of the `agent` field
+    {"user_agent_browser",         "VARCHAR",   255,     nil,         "Fields[user_agent_browser]"},
+    {"user_agent_os",              "VARCHAR",   255,     nil,         "Fields[user_agent_os]"},
+    {"user_agent_version",         "VARCHAR",   255,     nil,         "Fields[user_agent_version]"},
+    
     {"errno",                      "VARCHAR",   255,     nil,         "Fields[errno]"},
     {"lang",                       "VARCHAR",   255,     nil,         "Fields[lang]"},
     {"method",                     "VARCHAR",   255,     nil,         "Fields[method]"},
@@ -226,9 +230,9 @@ local schema = {
 
     {"classifiers",                "VARCHAR",   1000,    nil,         "Fields[classifiers]"},
 
-    {'"predicate.is_protocol"',    "BOOLEAN",   nil,     nil,         "Fields[predicate.is_protocol]"},
-    {'"predicate.query_length"',   "BOOLEAN",   nil,     nil,         "Fields[predicate.query_length]"},
-    {'"predicate.is_hostname"',    "BOOLEAN",   nil,     nil,         "Fields[predicate.is_hostname]"},
+    {'"predicates.is_protocol"',    "BOOLEAN",   nil,     nil,         "Fields[predicates.is_protocol]"},
+    {'"predicates.query_length"',   "BOOLEAN",   nil,     nil,         "Fields[predicates.query_length]"},
+    {'"predicates.is_hostname"',    "BOOLEAN",   nil,     nil,         "Fields[predicates.is_hostname]"},
 
     {"query",                      "VARCHAR",   255,     nil,         "Fields[query]"}
 }
