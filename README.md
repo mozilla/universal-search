@@ -1,5 +1,7 @@
 # universal-search
 
+Current version: 1.0.6 (updated 2016/05/05; [changelog](docs/changelog.md))
+
 ## Local Development
 
 ### First-time Setup
