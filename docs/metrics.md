@@ -9,11 +9,56 @@ A summary of the metrics the Universal Search add-on and recommendation server w
 - **Search** — the full lifecycle, beginning when the user types a key into the url bar, and ending when the user either chooses an item from or otherwise dismisses the popup.
 - **Recommendation** - the recommendation UI inserted into the popup by this add-on.
 
+## Data analysis
+
+The collected data will primarily be used to answer the following questions. Images are used for visualization and are not composed of actual data.
+
+
+### Key performance indicators
+
+
+#### Recommendation usage rates
+
+_When a result is chosen, how often is it a recommendation? How often do users choose the different types of recommendations?_
+
+This will allow us to understand the overall effectiveness of our recommendations along with how the different types perform so that we can decide what to show and when to show it.
+
+![](images/kpi_1.png)
+
+
+#### User retention
+
+_Do users continue to use recommendations? As we improve the recommendations, are they more likely to stick around?_
+
+This will allow us to understand overall retention. A user is considered retained if they use at least one recommendation each week.
+
+![](images/kpi_2.png)
+
+
+### Additional analysis
+
+
+#### Result types
+
+_What are the most common uses of the Awesome Bar?_
+
+This will give us a better understanding of how people are using the Awesome Bar now so that we can see how recommendations affect that. It will also allow us to devise new tests in the future.
+
+![](images/addtl_1.png)
+
+
+#### Rich data
+
+_Does richer data entice users to click more often?_
+
+We want to validate that rich data (icons and images) makes it easier for users to choose a recommendation. By tracking click through rates based on the amount of rich data, we can get an understanding of which data types are most impactful.
+
+![](images/addtl_2.png)
+
 
 ## Data collection
 
 Metrics gathered from the Universal Search add-on will be reported to the Test Pilot add-on, which will augment that information and relay it to Firefox's telemetry system via `submitExternalPing`. This is not currently implemented on the Test Pilot side; those efforts are encompassed by [issue #234](https://github.com/mozilla/testpilot/issues/234).
-
 
 ### On the client
 
@@ -52,7 +97,7 @@ Here's a rough schema:
 }
 ```
 
-Here's an example of a complete telemetry ping:
+Here's an example of the `payload` portion of a Test Pilot telemetry ping:
 
 ```js
 {
@@ -68,6 +113,26 @@ Here's an example of a complete telemetry ping:
 	}
 }
 ```
+
+A Redshift schema for the payload:
+
+```js
+local schema = {
+--   column name                   field type   length  attributes   field name
+    {"timestamp",                  "TIMESTAMP", nil,    "SORTKEY",   "Timestamp"},
+    {"uuid",                       "VARCHAR",   36,      nil,         get_uuid},
+
+    {"test",                       "VARCHAR",   255,     nil,         "test"},
+    {"agent",                      "VARCHAR",   45,      nil,         "agent"},
+    {"didNavigate",                "BOOLEAN",   nil,     nil,         "payload[didNavigate]"},
+    {"interactionType",            "VARCHAR",   255,     nil,         "payload[interactionType]"},
+    {"recommendationShown",        "BOOLEAN",   nil,     nil,         "payload[recommendationShown]"},
+    {"recommendationType",         "VARCHAR",   255,     nil,         "payload[recommendationType]"},
+    {"recommendationSelected",     "BOOLEAN",   nil,     nil,         "payload[recommendationSelected]"},
+    {"selectedIndex",              "INTEGER",   nil,     nil,         "payload[selectedIndex]"}
+}
+```
+
 
 #### Data Analysis
 
@@ -139,6 +204,36 @@ The logs will be printed to stdout in the standard [mozlog format](https://githu
 }
 ```
 
+And Redshift schema:
+
+```js
+local schema = {
+--   column name                   field type   length  attributes   field name
+    {"timestamp",                  "TIMESTAMP", nil,    "SORTKEY",   "Timestamp"},
+    {"uuid",                       "VARCHAR",   36,      nil,         get_uuid},
+    {"hostname",                   "VARCHAR",   255,     nil,         "Hostname"},
+    {"logger",                     "VARCHAR",   255,     nil,         "logger"},
+    {"severity",                   "INTEGER",   nil,     nil,         "Severity"},
+    {"type",                       "VARCHAR",   255,     nil,         "type"},
+
+    {"agent",                      "VARCHAR",   255,     nil,         "Fields[agent]"},
+    {"errno",                      "VARCHAR",   255,     nil,         "Fields[errno]"},
+    {"lang",                       "VARCHAR",   255,     nil,         "Fields[lang]"},
+    {"method",                     "VARCHAR",   255,     nil,         "Fields[method]"},
+    {"path",                       "VARCHAR",   255,     nil,         "Fields[path]"},
+    {"status_code",                "INTEGER",   nil,     nil,         "Fields[status_code]"},
+    {"t",                          "VARCHAR",   36,      nil,         "Fields[t]"},
+
+    {"classifiers",                "VARCHAR",   1000,    nil,         "Fields[classifiers]"},
+
+    {"predicate__is_protocol",     "BOOLEAN",   nil,     nil,         "Fields[predicate.is_protocol]"},
+    {"predicate__query_length",    "BOOLEAN",   nil,     nil,         "Fields[predicate.query_length]"},
+    {"predicate__is_hostname",     "BOOLEAN",   nil,     nil,         "Fields[predicate.is_hostname]"},
+
+    {"query",                      "VARCHAR",   255,     nil,         "Fields[query]"}
+}
+```
+
 
 #### Standard `mozlog` data
 
@@ -170,50 +265,3 @@ The logs will be printed to stdout in the standard [mozlog format](https://githu
     * `Fields.predicates.query_length`: `true` if the query is longer than 20 characters.
 * `Fields.query`: the value of the `q` querystring parameter. Not collected if any predicates are `true`.
 * `Fields.status_code`: the HTTP status code of the response. Not collected if any predicates are `true`.
-
-
-## Data analysis
-
-The collected data will primarily be used to answer the following questions. Images are used for visualization and are not composed of actual data.
-
-
-### Key performance indicators
-
-
-#### Recommendation usage rates
-
-_When a result is chosen, how often is it a recommendation? How often do users choose the different types of recommendations?_
-
-This will allow us to understand the overall effectiveness of our recommendations along with how the different types perform so that we can decide what to show and when to show it.
-
-![](images/kpi_1.png)
-
-
-#### User retention
-
-_Do users continue to use recommendations? As we improve the recommendations, are they more likely to stick around?_
-
-This will allow us to understand overall retention. A user is considered retained if they use at least one recommendation each week.
-
-![](images/kpi_2.png)
-
-
-### Additional analysis
-
-
-#### Result types
-
-_What are the most common uses of the Awesome Bar?_
-
-This will give us a better understanding of how people are using the Awesome Bar now so that we can see how recommendations affect that. It will also allow us to devise new tests in the future.
-
-![](images/addtl_1.png)
-
-
-#### Rich data
-
-_Does richer data entice users to click more often?_
-
-We want to validate that rich data (icons and images) makes it easier for users to choose a recommendation. By tracking click through rates based on the amount of rich data, we can get an understanding of which data types are most impactful.
-
-![](images/addtl_2.png)
