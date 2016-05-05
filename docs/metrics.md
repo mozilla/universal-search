@@ -226,9 +226,9 @@ local schema = {
 
     {"classifiers",                "VARCHAR",   1000,    nil,         "Fields[classifiers]"},
 
-    {"predicate__is_protocol",     "BOOLEAN",   nil,     nil,         "Fields[predicate.is_protocol]"},
-    {"predicate__query_length",    "BOOLEAN",   nil,     nil,         "Fields[predicate.query_length]"},
-    {"predicate__is_hostname",     "BOOLEAN",   nil,     nil,         "Fields[predicate.is_hostname]"},
+    {'"predicate.is_protocol"',    "BOOLEAN",   nil,     nil,         "Fields[predicate.is_protocol]"},
+    {'"predicate.query_length"',   "BOOLEAN",   nil,     nil,         "Fields[predicate.query_length]"},
+    {'"predicate.is_hostname"',    "BOOLEAN",   nil,     nil,         "Fields[predicate.is_hostname]"},
 
     {"query",                      "VARCHAR",   255,     nil,         "Fields[query]"}
 }
