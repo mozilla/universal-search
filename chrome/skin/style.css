@@ -119,6 +119,7 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
 #universal-search-recommendation-title,
 #universal-search-recommendation-url {
   color: -moz-FieldText;
+  color: FieldText;
   display: block;
   margin: 0;
   overflow: hidden;
