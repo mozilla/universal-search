@@ -164,7 +164,7 @@ We do not wish to record individual users browsing habits; we're interested in a
 - Appear to begin with a protocol (`^[^\s]+\:\S`).
 - Appear to be a hostname (`^[^\s]+\.\S`)
 
-Additionally, we will discard outliers on a schedule:
+Additionally, we will discard outliers on a schedule (currently, every 24 hours):
 
 - Any queries that have only been made once.
 - Any queries longer than 6 characters that have been made less than 10% as frequently as the most common query of that length (e.g. if the most frequently-made 8-character query has been made 1000 times, all 8-character queries made fewer than 100 times will be discarded).
@@ -220,7 +220,7 @@ local schema = {
     {"user_agent_browser",         "VARCHAR",   255,     nil,         "Fields[user_agent_browser]"},
     {"user_agent_os",              "VARCHAR",   255,     nil,         "Fields[user_agent_os]"},
     {"user_agent_version",         "VARCHAR",   255,     nil,         "Fields[user_agent_version]"},
-    
+
     {"errno",                      "VARCHAR",   255,     nil,         "Fields[errno]"},
     {"lang",                       "VARCHAR",   255,     nil,         "Fields[lang]"},
     {"method",                     "VARCHAR",   255,     nil,         "Fields[method]"},
@@ -234,7 +234,10 @@ local schema = {
     {'"predicates.query_length"',   "BOOLEAN",   nil,     nil,         "Fields[predicates.query_length]"},
     {'"predicates.is_hostname"',    "BOOLEAN",   nil,     nil,         "Fields[predicates.is_hostname]"},
 
-    {"query",                      "VARCHAR",   255,     nil,         "Fields[query]"}
+    -- Note this isn't in the JSON.  It's calculated on the server side
+    {'"predicates.unusual"',        "BOOLEAN",   nil,     nil,         get_false},
+
+    {"query",                       "VARCHAR",   255,     nil,         "Fields[query]"}
 }
 ```
 
@@ -267,5 +270,7 @@ local schema = {
     * `Fields.predicates.is_hostname`: `true` if the query appears to be a hostname.
     * `Fields.predicates.is_protocol`: `true` if the query appears to begin with a protocol.
     * `Fields.predicates.query_length`: `true` if the query is longer than 20 characters.
+    * `Fields.predicates.unusual`: `true` if the query was determined to be
+      unusual (see the section above about discarding outliers)
 * `Fields.query`: the value of the `q` querystring parameter. Not collected if any predicates are `true`.
 * `Fields.status_code`: the HTTP status code of the response. Not collected if any predicates are `true`.
