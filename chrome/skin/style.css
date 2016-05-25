@@ -58,15 +58,9 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
   width: 32px;
 }
 
-#universal-search-recommendation-logo,
 #universal-search-recommendation-keyimage {
   position: relative;
   z-index: -1;
-}
-
-#universal-search-recommendation-logo {
-  height: 32px;
-  width: 32px;
 }
 
 #universal-search-recommendation-letterbox {
@@ -174,7 +168,6 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
   background-color: #FFF;
   box-shadow: 0;
 }
-#universal-search-recommendation.highlight #universal-search-recommendation-logo,
 #universal-search-recommendation.highlight #universal-search-recommendation-keyimage {
   z-index: 1;
 }
