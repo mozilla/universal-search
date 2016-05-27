@@ -26,7 +26,6 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
 
 #universal-search-recommendation {
   border-bottom: none;
-  display: flex;
   padding: 8px 15px 8px 9px;
   width: 100%;
 }
@@ -58,15 +57,13 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
   width: 32px;
 }
 
-#universal-search-recommendation-logo,
 #universal-search-recommendation-keyimage {
   position: relative;
   z-index: -1;
 }
 
-#universal-search-recommendation-logo {
-  height: 32px;
-  width: 32px;
+#universal-search-recommendation-top-content {
+    -moz-box-pack: justify;
 }
 
 #universal-search-recommendation-letterbox {
@@ -116,15 +113,27 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
   min-width: 0;
 }
 
+#universal-search-recommendation-details,
+#universal-search-recommendation-description {
+  color: GrayText;
+}
+
 #universal-search-recommendation-title,
 #universal-search-recommendation-url {
   color: -moz-FieldText;
   color: FieldText;
-  display: block;
-  margin: 0;
+/*  margin: 0; */
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+#universal-search-recommendation-details,
+#universal-search-recommendation-description {
+  color: GrayText;
+  -moz-box-align: start;
+  text-overflow: ellipsis;
+  margin-left: 0;
 }
 
 #universal-search-recommendation-url {
@@ -139,11 +148,12 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
 }
 
 #universal-search-recommendation-label {
-  color: #BBB;
+  color: GrayText;
   cursor: default;
-  flex-grow: 1;
-  margin-left: 8px;
+  /*
+  margin: 0;
   text-align: right;
+  */
   -moz-user-select: none;
   user-select: none;
 }
@@ -166,7 +176,9 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
 #universal-search-recommendation.highlight #universal-search-recommendation-url {
   color: HighlightText;
 }
-#universal-search-recommendation.highlight #universal-search-recommendation-label {
+#universal-search-recommendation.highlight #universal-search-recommendation-label,
+#universal-search-recommendation.highlight #universal-search-recommendation-details,
+#universal-search-recommendation.highlight #universal-search-recommendation-description {
   color: HighlightText;
   opacity: 0.67;
 }
@@ -174,7 +186,21 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
   background-color: #FFF;
   box-shadow: 0;
 }
-#universal-search-recommendation.highlight #universal-search-recommendation-logo,
 #universal-search-recommendation.highlight #universal-search-recommendation-keyimage {
   z-index: 1;
+}
+
+
+
+#universal-search-recommendation-content,
+#universal-search-recommendation-top-content,
+#universal-search-recommendation-title,
+#universal-search-recommendation-label {
+  border: 1px solid rebeccapurple;
+}
+
+#universal-search-recommendation-content {
+  -moz-box-align: stretch;
+}
+#universal-search-recommendation-top-content {
 }
