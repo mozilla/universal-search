@@ -110,6 +110,11 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
   min-width: 0;
 }
 
+#universal-search-recommendation-details,
+#universal-search-recommendation-description {
+  color: GrayText;
+}
+
 #universal-search-recommendation-title,
 #universal-search-recommendation-url {
   color: -moz-FieldText;
@@ -119,6 +124,14 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+#universal-search-recommendation-details,
+#universal-search-recommendation-description {
+  color: GrayText;
+  -moz-box-align: start;
+  text-overflow: ellipsis;
+  margin-left: 0;
 }
 
 #universal-search-recommendation-url {
@@ -133,7 +146,7 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
 }
 
 #universal-search-recommendation-label {
-  color: #BBB;
+  color: GrayText;
   cursor: default;
   flex-grow: 1;
   margin-left: 8px;
@@ -160,7 +173,9 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
 #universal-search-recommendation.highlight #universal-search-recommendation-url {
   color: HighlightText;
 }
-#universal-search-recommendation.highlight #universal-search-recommendation-label {
+#universal-search-recommendation.highlight #universal-search-recommendation-label,
+#universal-search-recommendation.highlight #universal-search-recommendation-details,
+#universal-search-recommendation.highlight #universal-search-recommendation-description {
   color: HighlightText;
   opacity: 0.67;
 }
