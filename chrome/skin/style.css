@@ -26,7 +26,6 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
 
 #universal-search-recommendation {
   border-bottom: none;
-  display: flex;
   padding: 8px 15px 8px 9px;
   width: 100%;
 }
