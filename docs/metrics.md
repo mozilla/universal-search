@@ -123,7 +123,12 @@ local schema = {
     {"uuid",                       "VARCHAR",   36,      nil,         get_uuid},
 
     {"test",                       "VARCHAR",   255,     nil,         "test"},
-    {"agent",                      "VARCHAR",   45,      nil,         "agent"},
+
+    -- Parsed automatically from the `agent` field
+    {"user_agent_browser",         "VARCHAR",   255,     nil,         "Fields[user_agent_browser]"},
+    {"user_agent_os",              "VARCHAR",   255,     nil,         "Fields[user_agent_os]"},
+    {"user_agent_version",         "VARCHAR",   255,     nil,         "Fields[user_agent_version]"},
+
     {"didNavigate",                "BOOLEAN",   nil,     nil,         "payload[didNavigate]"},
     {"interactionType",            "VARCHAR",   255,     nil,         "payload[interactionType]"},
     {"recommendationShown",        "BOOLEAN",   nil,     nil,         "payload[recommendationShown]"},
