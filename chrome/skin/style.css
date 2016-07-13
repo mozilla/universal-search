@@ -26,9 +26,9 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
 
 #universal-search-recommendation {
   border-bottom: none;
+  display: flex;
   padding: 8px 15px 8px 9px;
   width: 100%;
-  display: flex;
 }
 
 #universal-search-recommendation[collapsed="true"] {
@@ -64,7 +64,8 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
 }
 
 #universal-search-recommendation-top-content {
-    -moz-box-pack: justify;
+  -moz-box-flex: 1;
+  -moz-box-pack: justify;
 }
 
 #universal-search-recommendation-letterbox {
@@ -112,22 +113,7 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
 #universal-search-recommendation-content {
   flex-grow: 1;
   min-width: 0;
-}
-
-#universal-search-recommendation-details,
-#universal-search-recommendation-description {
-  color: GrayText;
-  width:100%;
-}
-
-#universal-search-recommendation-title,
-#universal-search-recommendation-url {
-  color: -moz-FieldText;
-  color: FieldText;
-/*  margin: 0; */
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  -moz-box-align: stretch;
 }
 
 #universal-search-recommendation-details,
@@ -135,10 +121,16 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
   color: GrayText;
   -moz-box-align: start;
   text-overflow: ellipsis;
+  width:100%;
 }
 
-#universal-search-recommendation-details {
-  width: 100%;
+#universal-search-recommendation-title,
+#universal-search-recommendation-url {
+  color: -moz-FieldText;
+  color: FieldText;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 #universal-search-recommendation-url {
@@ -155,10 +147,6 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
 #universal-search-recommendation-label {
   color: GrayText;
   cursor: default;
-  /*
-  margin: 0;
-  text-align: right;
-  */
   -moz-user-select: none;
   user-select: none;
 }
@@ -193,13 +181,4 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
 }
 #universal-search-recommendation.highlight #universal-search-recommendation-keyimage {
   z-index: 1;
-}
-
-#universal-search-recommendation-content {
-  -moz-box-align: stretch;
-}
-
-#universal-search-recommendation-top-content {
-  -moz-box-flex: 1;
-  -moz-box-pack: justify;
 }
