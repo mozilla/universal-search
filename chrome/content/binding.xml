@@ -19,11 +19,18 @@
         <children/>
         <xul:vbox anonid="one-off-search-buttons"
                   class="search-one-offs"
+                  hidden="true"
                   compact="true"
                   includecurrentengine="true"
+                  disabletab="true"
                   flex="1"/>
       </xul:hbox>
     </content>
+    <implementation>
+      <constructor><![CDATA[
+        this.mInput = window.gURLBar;
+      ]]></constructor>
+    </implementation>
   </binding>
 
   <![CDATA[
