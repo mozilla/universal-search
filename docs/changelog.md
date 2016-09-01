@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.0.9
+
+**Date:** 2017/08/29
+
+**Download:** [`universal-search-1.0.9.xpi`](https://s3-us-west-2.amazonaws.com/universal-search/universal-search-1.0.9.xpi)
+
+**Summary**: Fixes Universal Search on Nightly, broken ~30 days ago due to new one off search UI in Nightly. For this point release, those new buttons are disabled. [Issue #304](https://github.com/mozilla/universal-search/issues/304) tracks work needed to re-enable one-off searches in the awesomebar.
+
+- [Unable to browse the web with Universal Search enabled and latest Nightly](https://github.com/mozilla/universal-search/commit/03aeb87dc82e9b4b4dbe63a2f04f024aad447beb)([issue #286](https://github.com/mozilla/universal-search/issues/286))
+- [Key focus broken on Nightly](https://github.com/mozilla/universal-search/commit/03aeb87dc82e9b4b4dbe63a2f04f024aad447beb)([issue #292](https://github.com/mozilla/universal-search/issues/292))
+- [Mouse focus broken on Nightly](https://github.com/mozilla/universal-search/commit/03aeb87dc82e9b4b4dbe63a2f04f024aad447beb)([issue #293](https://github.com/mozilla/universal-search/issues/293))
+- [Mouse focus broken on Nightly](https://github.com/mozilla/universal-search/commit/03aeb87dc82e9b4b4dbe63a2f04f024aad447beb)([issue #293](https://github.com/mozilla/universal-search/issues/293))
+- [Nightly breakage: stop using popupshowing event](https://github.com/mozilla/universal-search/commit/03aeb87dc82e9b4b4dbe63a2f04f024aad447beb)([issue #295](https://github.com/mozilla/universal-search/issues/295))
+- [Nightly error: `property handleEvent is not callable`](https://github.com/mozilla/universal-search/commit/03aeb87dc82e9b4b4dbe63a2f04f024aad447beb)([issue #298](https://github.com/mozilla/universal-search/issues/298))
+
+
 ## 1.0.8
 
 **Date:** 2016/07/22
