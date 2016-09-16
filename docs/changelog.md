@@ -1,12 +1,22 @@
 # Changelog
 
+## 1.0.10
+
+**Date:** 2016/09/16
+
+**Download:** [`universal-search-1.0.10.xpi`](https://s3-us-west-2.amazonaws.com/universal-search/universal-search-1.0.10.xpi)
+
+**Summary:** Marks Universal Search as [multiprocess-compatible](https://wiki.mozilla.org/Electrolysis).
+
+- [Mark addon as multiprocess compatible](https://github.com/mozilla/universal-search/commit/c0d2cfc74ebbf01f6c4bdbc231ab87853f4c6864)([issue #291](https://github.com/mozilla/universal-search/issues/291))
+
 ## 1.0.9
 
-**Date:** 2017/08/29
+**Date:** 2016/08/29
 
 **Download:** [`universal-search-1.0.9.xpi`](https://s3-us-west-2.amazonaws.com/universal-search/universal-search-1.0.9.xpi)
 
-**Summary**: Fixes Universal Search on Nightly, broken ~30 days ago due to new one off search UI in Nightly. For this point release, those new buttons are disabled. [Issue #304](https://github.com/mozilla/universal-search/issues/304) tracks work needed to re-enable one-off searches in the awesomebar.
+**Summary:** Fixes Universal Search on Nightly, broken ~30 days ago due to new one off search UI in Nightly. For this point release, those new buttons are disabled. [Issue #304](https://github.com/mozilla/universal-search/issues/304) tracks work needed to re-enable one-off searches in the awesomebar.
 
 - [Unable to browse the web with Universal Search enabled and latest Nightly](https://github.com/mozilla/universal-search/commit/03aeb87dc82e9b4b4dbe63a2f04f024aad447beb)([issue #286](https://github.com/mozilla/universal-search/issues/286))
 - [Key focus broken on Nightly](https://github.com/mozilla/universal-search/commit/03aeb87dc82e9b4b4dbe63a2f04f024aad447beb)([issue #292](https://github.com/mozilla/universal-search/issues/292))
