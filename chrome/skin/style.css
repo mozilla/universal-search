@@ -140,6 +140,7 @@ popupset#mainPopupSet panel#PopupAutoCompleteRichResult richlistbox {
 }
 
 #universal-search-recommendation-url {
+  display: block;
   font: message-box;
   color: -moz-nativehyperlinktext;
 }
