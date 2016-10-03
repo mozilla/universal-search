@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.11
+
+**Date:** 2016/10/03
+
+**Download:** [`universal-search-1.0.11.xpi`](https://s3-us-west-2.amazonaws.com/universal-search/universal-search-1.0.11.xpi)
+
+**Summary:** Adds [movie cards](https://github.com/mozilla/universal-search/pull/316) with [A/B testing](https://github.com/mozilla/universal-search/pull/278).
+
 ## 1.0.10
 
 **Date:** 2016/09/16
