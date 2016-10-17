@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.12
+
+**Date:** 2016/10/17
+
+**Download:** [`universal-search-1.0.12.xpi`](https://s3-us-west-2.amazonaws.com/universal-search/universal-search-1.0.12.xpi)
+
+**Summary:** Fixes broken Enter key in Nightly ([issue 322](https://github.com/mozilla/universal-search/issues/322)).
+
 ## 1.0.11
 
 **Date:** 2016/10/03
