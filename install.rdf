@@ -13,7 +13,7 @@
     <em:optionsURL>chrome://universalsearch/content/preferences.xul</em:optionsURL>
     <em:iconURL>chrome://universalsearch-skin/content/icon.png</em:iconURL>
     <em:optionsType>2</em:optionsType>
-    <em:updateURL>https://s3-us-west-2.amazonaws.com/universal-search/update.rdf</em:updateURL>
+    <em:updateURL>https://testpilot.firefox.com/files/universalsearch/updates.json</em:updateURL>
     <em:targetApplication>
       <Description>
         <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
