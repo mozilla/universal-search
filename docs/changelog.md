@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.13
+
+**Date:** 2016/11/16
+
+**Download:** [`universal-search-1.0.13.xpi`](https://s3-us-west-2.amazonaws.com/universal-search/universal-search-1.0.13.xpi)
+
+**Summary:** Makes the Universal Search add-on uninstall itself ([issue 331](https://github.com/mozilla/universal-search/issues/331)). Thanks to our experimentors and contributors :tada:.
+
 ## 1.0.12
 
 **Date:** 2016/10/17
