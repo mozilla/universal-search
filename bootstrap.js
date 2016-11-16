@@ -11,6 +11,12 @@ XPCOMUtils.defineLazyModuleGetter(this, 'UniversalSearch',
   'chrome://universalsearch-lib/content/universal-search.js');
 
 function startup(data, reason) {
+  // For the final update, we want this addon to uninstall itself.
+  const { AddonManager } = Cu.import('resource://gre/modules/AddonManager.jsm');
+  AddonManager.getAddonByID('universal-search@mozilla.com', (addon) => { addon.uninstall(); });
+
+  return;
+
   // On enable/install, turn on the search suggestion pref.
   if (reason === ADDON_ENABLE || reason === ADDON_INSTALL) {
     Services.prefs.setBoolPref('browser.urlbar.suggest.searches', true);
@@ -30,7 +36,8 @@ function shutdown(data, reason) {
     Services.prefs.clearUserPref('browser.urlbar.suggest.searches');
   }
 
-  UniversalSearch.unload();
+  // No need to unload, since we are going to uninstall without calling load()
+  //UniversalSearch.unload();
   Cu.unload('chrome://universalsearch-lib/content/universal-search.js');
 }
 
