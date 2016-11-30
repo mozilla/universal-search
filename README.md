@@ -1,6 +1,8 @@
+> *Note:* Universal Search has been retired and is no longer under development. Read about [our takeaways](https://testpilot.firefox.com/experiments/universal-search) and try out [another Test Pilot experiment](https://testpilot.firefox.com).
+
 # universal-search
 
-[Universal Search](https://wiki.mozilla.org/Firefox/Universal_Search) [Test Pilot](https://wiki.mozilla.org/Test_Pilot) add-on.
+[Universal Search](https://testpilot.firefox.com/experiments/universal-search) [Test Pilot](https://wiki.mozilla.org/Test_Pilot) add-on.
 
 [![Available on Test Pilot](https://img.shields.io/badge/available_on-Test_Pilot-0996F8.svg)](https://testpilot.firefox.com/experiments/universal-search)
 
